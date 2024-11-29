@@ -7,9 +7,14 @@ from src.logger import logger
 from dataclasses import dataclass
 from sklearn.model_selection import train_test_split
 
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
+
+
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
+
 @dataclass
 class DataIngestionConfig:
     train_path: str = os.path.join("artifacts", "train.csv")
@@ -56,4 +61,9 @@ class DataIngestion:
         
 if __name__ == "__main__":
     data_ingestion = DataIngestion()
-    data_ingestion.initializationData()
+    train_data , test_data = data_ingestion.initializationData()
+
+    data_transformation = DataTransformation()
+    data_transformation.initialize_data_transformation(train_data,test_data)
+
+
