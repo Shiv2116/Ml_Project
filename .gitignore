@@ -2,10 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+/.ebextensions
 # C extensions
 *.so
-
+/student_performance.pem
 # Distribution / packaging
 .Python
 build/
